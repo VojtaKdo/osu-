@@ -1,0 +1,74 @@
+body{
+    background: black;
+    overflow: hidden;
+    cursor: url('../image/cursor.png'), auto;
+    user-select: none;
+}
+
+#retry, #back{
+    position: relative;
+    display: none;
+    opacity: 0;
+    margin: auto;
+    width: 400px;
+}
+
+#retry{
+    margin-top: 30vh;
+}
+
+
+
+#retry:hover, #back:hover{
+    width: 450px;
+}
+
+#number{
+    text-align: center;
+    position: absolute;
+    top: -40px;
+    width: 100%;
+    color: white;
+    font-size: 64px;
+}
+
+#circle{
+    position: relative;
+    display: block;
+    float:left;
+    border: 5px solid white;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    background-color: rgb(50, 115, 168);
+}
+
+#points{
+    color: white;
+    font-size: 50px;
+    float: right;
+    margin-top: 0;
+}
+
+#area{
+    border: 1px solid white;
+    width: 100vh;
+    height: 81vh;
+    margin: auto;
+    margin-top: 4%;
+}
+
+#healthBar{
+    width: 400px;
+    height: 10px;
+    padding: 5px;
+    background: #ddd;
+    position: relative;
+}
+
+#bar{
+    background: red;
+    width: 400px;
+    height: 10px;
+    position: relative;
+}
