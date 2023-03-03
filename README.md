@@ -1,2 +1,2 @@
 # Trash osu!
-[Spustit]()
+[Spustit](https://vojtakdo.github.io/osu-/)
