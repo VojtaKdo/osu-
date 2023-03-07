@@ -206,10 +206,9 @@ retry.onclick = () => {
   perfect = 0;
   combo = 1;
   score = 0;
-  failMiss.innerHTML = `${mistake}`;
-  fail300.innerHTML = `${perfect}`;
-  failCombo.innerHTML = `${combo}`;
-  failScore.innerHTML = `${score}`;
+  comboCounter.innerHTML = `${combo}x`;
+  points.innerHTML = `${score}`;
+
   circle.style.opacity = "1";
   circle.style.transition = "0s";
   area.style.opacity = "1";
