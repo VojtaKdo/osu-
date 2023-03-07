@@ -9,12 +9,11 @@ body{
     position: relative;
     display: none;
     opacity: 0;
-    margin: auto;
     width: 400px;
 }
 
 #retry{
-    margin-top: 30vh;
+    margin-top: 1vh;
 }
 
 
@@ -34,7 +33,7 @@ body{
 
 #circle{
     position: relative;
-    display: block;
+    display: none;
     float:left;
     border: 5px solid white;
     border-radius: 50%;
@@ -55,7 +54,7 @@ body{
     width: 100vh;
     height: 81vh;
     margin: auto;
-    margin-top: 4%;
+    margin-top: 2%;
 }
 
 #healthBar{
@@ -72,3 +71,63 @@ body{
     height: 10px;
     position: relative;
 }
+
+#miss{
+    display: none;
+    text-align: center;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin-left: 520px;
+    margin-top: 150px;
+}
+
+#comboCounter{
+    position: absolute;
+    margin-bottom: auto;
+    color: white;
+    font-size: 50px;
+}
+
+#failScore, #failCombo, #failMiss, #fail300{
+    display: none;
+    color: white;
+}
+
+#result{
+    background-image: url(../image/panel.png);
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: 60%;
+    font-size: 50px;
+    color: white;
+    opacity: 0;
+    float: left;
+    display: none;
+}
+
+#failScore{
+    margin-left: 20.2%;
+    margin-top: 3%;
+}
+
+#row{
+    display: flex;
+    flex-direction: row;
+    margin-top: 3.8%;
+}
+
+#fail300{
+    margin-left: 11.2%;
+}
+
+#failMiss{
+    margin-left: 29.5%;
+}
+
+#failCombo{
+    margin-left: 25.9%;
+    margin-top: -0.8%;
+}
+
