@@ -206,6 +206,10 @@ retry.onclick = () => {
   perfect = 0;
   combo = 1;
   score = 0;
+  failMiss.innerHTML = `${mistake}`;
+  fail300.innerHTML = `${perfect}`;
+  failCombo.innerHTML = `${combo}`;
+  failScore.innerHTML = `${score}`;
   circle.style.opacity = "1";
   circle.style.transition = "0s";
   area.style.opacity = "1";
@@ -216,6 +220,8 @@ retry.onclick = () => {
   healthBar.style.transition = "0s";
   points.style.opacity = "1";
   points.style.transition = "0s";
+  comboCounter.style.opacity = "1";
+  comboCounter.style.transition = "0s";
   retry.style.display = "none";
   back.style.display = "none";
   result.style.display = "none";
