@@ -8,7 +8,6 @@ const fail = document.getElementById("fail");
 const area = document.getElementById("area");
 const back = document.getElementById("back");
 const retry = document.getElementById("retry");
-const failMenu = document.getElementById("failMenu");
 const miss = document.getElementById("miss");
 const failScore = document.getElementById("failScore");
 const fail300 = document.getElementById("fail300");
@@ -16,6 +15,10 @@ const failCombo = document.getElementById("failCombo");
 const failMiss = document.getElementById("failMiss");
 const comboCounter = document.getElementById("comboCounter");
 const result = document.getElementById("result");
+const music = document.getElementById("music");
+const play = document.getElementById("play");
+const logo = document.getElementById("logo");
+const menuMusic = document.getElementById("menuMusic");
 
 let id = 0;
 let score = 0;
@@ -26,12 +29,12 @@ let y = 0;
 let mistake = 0;
 let o = 0;
 let p = 0;
-let combo = 1;
+let combo = 0;
+let maxCombo = 0;
 let perfect = 0;
-
 setInterval(() => {
-  ax = area.offsetWidth - 126;
-  by = area.offsetHeight - 126;
+  ax = area.offsetWidth - 130;
+  by = area.offsetHeight - 130;
 }, 0);
 
 // Funkce pro životy
@@ -78,6 +81,7 @@ function drain() {
       comboCounter.style.opacity = "0";
       comboCounter.style.transition = "4s";
       fail.play();
+      music.pause();
       fail.volume = 0.2;
       health = 100;
 
@@ -98,7 +102,7 @@ function drain() {
         failScore.innerHTML = `${score}`;
         fail300.innerHTML = `${perfect}`;
         failMiss.innerHTML = `${mistake}`;
-        failCombo.innerHTML = `${combo}`;
+        failCombo.innerHTML = `${maxCombo}`;
       }, 2800);
       setTimeout(() => {
         back.style.opacity = "1";
@@ -120,8 +124,16 @@ function missed() {
   miss.style.opacity = "1";
   miss.style.transition = "0s";
   health -= 50;
-  combo = 1;
+  score -= 100;
+  combo = 0;
   comboCounter.innerHTML = `${combo}x`;
+  points.innerHTML = `${score}`;
+  setInterval(() => {
+    if (score <= 0) {
+      score = 0;
+      points.innerHTML = `${score}`;
+    }
+  }, 0);
 }
 // Funkce pro změnu polohy
 function poloha() {
@@ -130,6 +142,7 @@ function poloha() {
   setTimeout(() => {
     o = x;
     p = y;
+    console.log(Math.max(combo));
   }, 400);
   setTimeout(() => {
     miss.style.opacity = "0";
@@ -185,6 +198,9 @@ circle.onclick = () => {
   score += 300;
   health += 50;
   combo++;
+  if (combo > maxCombo) {
+    maxCombo++;
+  }
   perfect++;
   points.innerHTML = `${score}`;
   comboCounter.innerHTML = `${combo}x`;
@@ -204,8 +220,9 @@ retry.onclick = () => {
   id = 0;
   mistake = 0;
   perfect = 0;
-  combo = 1;
+  combo = 0;
   score = 0;
+  maxCombo = 0;
   comboCounter.innerHTML = `${combo}x`;
   points.innerHTML = `${score}`;
 
@@ -247,16 +264,65 @@ retry.onclick = () => {
   }, 3000);
   setTimeout(() => {
     drain();
+    music.play();
+    music.volume = 0.1;
+    music.currentTime = 0;
   }, 2000);
 };
 
+logo.onclick = () => {
+  play.style.display = "block";
+  logo.style.marginLeft = "20%";
+  clearInterval(logoAnim);
+  pos = setTimeout(() => {
+    logo.style.width = "32%";
+    logo.style.height = "32%";
+  }, 200);
+  setTimeout(() => {
+    play.style.opacity = "1";
+    play.style.transition = "0.5s";
+  }, 100);
+};
+
 // Co se stane po načtení stránky
-window.onload = () => {
+play.onclick = () => {
+  id = 0;
+  mistake = 0;
+  perfect = 0;
+  combo = 0;
+  score = 0;
+  maxCombo = 0;
   comboCounter.innerHTML = `${combo}x`;
-  clearTimeout(anim);
-  clearTimeout(oops);
+  points.innerHTML = `${score}`;
+  health += 400;
+  healthDrain = 2;
+  circle.style.pointerEvents = "all";
+  points.style.display = "block";
+  area.style.display = "block";
+  healthBar.style.display = "block";
+  bar.style.display = "block";
+  comboCounter.style.display = "block";
+  logo.style.display = "none";
+  play.style.display = "none";
+  circle.style.opacity = "1";
+  circle.style.transition = "0s";
+  area.style.opacity = "1";
+  area.style.transition = "0s";
+  bar.style.opacity = "1";
+  bar.style.transition = "0s";
+  healthBar.style.opacity = "1";
+  healthBar.style.transition = "0s";
+  points.style.opacity = "1";
+  points.style.transition = "0s";
+  comboCounter.style.opacity = "1";
+  comboCounter.style.transition = "0s";
+  comboCounter.innerHTML = `${combo}x`;
+  menuMusic.pause();
   setTimeout(() => {
     drain();
+    music.play();
+    music.volume = 0.1;
+    music.currentTime = 0;
   }, 1000);
   anim = setInterval(Trans, 1000);
   deletus = setInterval(() => {
@@ -265,4 +331,46 @@ window.onload = () => {
   setTimeout(() => {
     clearInterval(deletus);
   }, 2000);
+};
+
+back.onclick = () => {
+  logo.style.display = "block";
+  logo.style.margin = "auto";
+  logo.style.marginTop = "10%";
+  result.style.display = "none";
+  retry.style.display = "none";
+  back.style.display = "none";
+  logoAnim = setInterval(() => {
+    logo.style.width = "32%";
+    logo.style.height = "32%";
+    setTimeout(() => {
+      logo.style.width = "30%";
+      logo.style.height = "30%";
+    }, 200);
+  }, 400);
+  clearTimeout(anim);
+  clearTimeout(oops);
+  setTimeout(() => {
+    menuMusic.play();
+    menuMusic.volume = 0.03;
+    menuMusic.currentTime = 2.6;
+  }, 500);
+};
+
+window.onload = () => {
+  logoAnim = setInterval(() => {
+    logo.style.width = "32%";
+    logo.style.height = "32%";
+    setTimeout(() => {
+      logo.style.width = "30%";
+      logo.style.height = "30%";
+    }, 200);
+  }, 400);
+  clearTimeout(anim);
+  clearTimeout(oops);
+  setTimeout(() => {
+    menuMusic.play();
+    menuMusic.volume = 0.03;
+    menuMusic.currentTime = 2.6;
+  }, 500);
 };

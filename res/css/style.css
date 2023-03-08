@@ -47,7 +47,10 @@ body{
     font-size: 50px;
     float: right;
     margin-top: 0;
+    display: none;
 }
+
+
 
 #area{
     border: 1px solid white;
@@ -55,6 +58,7 @@ body{
     height: 81vh;
     margin: auto;
     margin-top: 2%;
+    display: none;
 }
 
 #healthBar{
@@ -63,6 +67,7 @@ body{
     padding: 5px;
     background: #ddd;
     position: relative;
+    display: none;
 }
 
 #bar{
@@ -70,6 +75,7 @@ body{
     width: 400px;
     height: 10px;
     position: relative;
+    display: none;
 }
 
 #miss{
@@ -88,6 +94,7 @@ body{
     margin-bottom: auto;
     color: white;
     font-size: 50px;
+    display: none;
 }
 
 #failScore, #failCombo, #failMiss, #fail300{
@@ -131,3 +138,35 @@ body{
     margin-top: -0.8%;
 }
 
+#play{
+    display: none; 
+    cursor: url('../image/cursor.png'), auto;
+    width: 40%;
+    height: 5%;
+    padding: 20px;
+    font-size: 50px;
+    color: white;
+    background-color:deeppink;
+    margin-top: 20%;
+    float: left;
+    margin-right: 15%;
+    transition: 1s;
+    opacity: 0;
+ }
+
+ #menu{
+    flex-direction: row;
+    display: flex;
+ }
+ 
+ #logo{
+     display: block;
+     margin: auto;
+     width: 30%;
+     height: 30%;
+     transition: 0.2s;
+     margin-top: 10%;
+ }
+ 
+
+ 
